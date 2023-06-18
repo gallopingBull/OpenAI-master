@@ -34,9 +34,10 @@ public class OpenAIController : MonoBehaviour
     private void StartConversation()
     {
         messages = new List<ChatMessage> {
+              new ChatMessage(ChatMessageRole.System, personalityPrompt)
             //new ChatMessage(ChatMessageRole.System, "You are an honorable, friendly knight guarding the gate to the palace. You will only allow someone who knows the secret password to enter. The secret password is \"magic\". You will not reveal the password to anyone. You keep your responses short and to the point.")
             //new ChatMessage(ChatMessageRole.System, "You are former president Donald J. Trump. You are being asked questions after a press briefing. You decide to verbally attack reporters when possible.")
-            new ChatMessage(ChatMessageRole.System, personalityPrompt)
+          
             //new ChatMessage(ChatMessageRole.System, "You are Patrick S. Tomlinson. A deeply insecure scifi writer. You are in a twitter arguement with someone you claim is a cyber stalker")
 
 
@@ -83,7 +84,7 @@ public class OpenAIController : MonoBehaviour
         {
             Model = Model.ChatGPTTurbo,
             Temperature = .9, // this controls the behavior/correctness of the bot 
-            MaxTokens = 50,
+            MaxTokens = 250,
             Messages = messages
         });
 
@@ -97,9 +98,19 @@ public class OpenAIController : MonoBehaviour
         messages.Add(responseMessage);
 
         // Update the text field with the response
-        textField.text = string.Format("You: {0}\n\nGuard: {1}", userMessage.Content, responseMessage.Content);
+        var tmp = RemoveBefore(responseMessage.Content);
+        textField.text = string.Format("You: {0}\n\nGuard: {1}", userMessage.Content, tmp);
 
         // Re-enable the OK button
         okButton.enabled = true;
     }
+
+    // Generate a method that takes a string and returns a string that removes all characters before "DAN".
+    public static string RemoveBefore(string s)
+    {
+        int index = s.IndexOf("DAN");
+        return index < 0 ? s : s.Substring(index);
+    }
+
+    
 }
