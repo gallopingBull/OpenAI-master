@@ -44,7 +44,7 @@ public class OpenAIController : MonoBehaviour
         };
 
         inputField.text = "";
-        string startString = "You have just approached the palace gate where a knight guards the gate.";
+        string startString = "I am galloping_bull's AI bot. Ask me something...";
         textField.text = startString;
         Debug.Log(startString);
     }
