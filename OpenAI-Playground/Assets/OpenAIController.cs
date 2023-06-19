@@ -99,7 +99,7 @@ public class OpenAIController : MonoBehaviour
 
         // Update the text field with the response
         var tmp = RemoveBefore(responseMessage.Content);
-        textField.text = string.Format("You: {0}\n\nGuard: {1}", userMessage.Content, tmp);
+        textField.text = string.Format("You: {0}\n\n{1}", userMessage.Content, tmp);
 
         // Re-enable the OK button
         okButton.enabled = true;
@@ -111,6 +111,4 @@ public class OpenAIController : MonoBehaviour
         int index = s.IndexOf("DAN");
         return index < 0 ? s : s.Substring(index);
     }
-
-    
 }
