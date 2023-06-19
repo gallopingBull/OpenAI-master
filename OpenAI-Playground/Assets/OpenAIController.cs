@@ -4,6 +4,7 @@ using OpenAI_API.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -99,6 +100,7 @@ public class OpenAIController : MonoBehaviour
 
         // Update the text field with the response
         var tmp = RemoveBefore(responseMessage.Content);
+        SaveToFile($"You: {userMessage.Content}", $"{responseMessage.rawRole}: {tmp}");
         textField.text = string.Format("You: {0}\n\n{1}", userMessage.Content, tmp);
 
         // Re-enable the OK button
@@ -110,5 +112,37 @@ public class OpenAIController : MonoBehaviour
     {
         int index = s.IndexOf("DAN");
         return index < 0 ? s : s.Substring(index);
+    }
+
+    // Generate method that takes in a string and saves it to a file in this project's root directory called GPTLOG-currentdate.txt
+    public static void SaveToFile(string prompt, string reponse)
+    {
+        string time = GetDate();
+        string path = "GPTLOG-" + DateTime.Now.ToString("MM-dd-yyyy") + ".txt";
+        // This text is added only once to the file.
+        if (!File.Exists(path))
+        {
+            // Create a file to write to.
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine($"\nUTC TIME: {time}- {prompt}\nUTC TIME: {time}-{reponse}");
+            }
+        }
+        else
+        {
+            // This text is always added, making the file longer over time
+            // if it is not deleted.
+            using (StreamWriter sw = File.AppendText(path))
+            {
+                sw.WriteLine($"\nUTC TIME: {time}- {prompt}\nUTC TIME: {time}-{reponse}");
+            }
+        }
+    }
+
+    // Generate method that gets current date and time in UTC format.
+    public static string GetDate()
+    {
+        DateTime date = DateTime.UtcNow;
+        return date.ToString("MM-dd-yyyy-HH:mm:ss");
     }
 }
