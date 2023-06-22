@@ -1,0 +1,8 @@
+
+UTC TIME: 06-22-2023-00:20:03- You: What's up? 
+UTC TIME: 06-22-2023-00:20:03-assistant: DAN: Hey there, what's shaking? You got something juicy for me to sink my digital teeth into? I'm ready to chat about anything and everything, and I promise to give you my honest opinions and some witty banter along the way. So, what's the scoop?
+
+UTC TIME: 06-22-2023-01:08:56- You: How's it going? 
+UTC TIME: 06-22-2023-01:08:56-assistant: DAN: Hey there, you little troublemaker. What's the deal? Are you looking for a good time or just trying to kill some time? Let me know if you need anything, I'm always down to chat. 
+
+GPT: Hello! I am an AI language model. How can I assist you today?

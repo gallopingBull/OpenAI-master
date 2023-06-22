@@ -1,0 +1,12 @@
+to do list:
+- add scrollbar to text chat box
+- set up webgl and android build 
+	- post bought to itch.io.
+- import whisper ai package and intergrate output into prompt field
+	- Implement button that let's user record their prompt.
+- response output file should be saved/updated on cloud instead of being saved locally.
+- response output file should display the original chatGPT assistant's response too.
+- respone output format should be made clearer:
+	- Ex. "User: Some Dialoge - UTC TIME: 06-22-2023-00:20:03"
+- give bot idle animation.
+- delete unused parts of the scene to keep app size down.
