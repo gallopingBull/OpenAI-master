@@ -7,7 +7,6 @@ to do list:
 - response output file should display the original chatGPT assistant's response too.
 - respone output format should be made clearer:
 	- Ex. "User: Some Dialoge - UTC TIME: 06-22-2023-00:20:03"
-- give bot idle animation.
 - delete unused parts of the scene to keep app size down.
 
 I am galloping_bull's AI bot. Ask me something...
