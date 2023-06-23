@@ -1,5 +1,4 @@
 to do list:
-- add scrollbar to text chat box
 - set up webgl and android build 
 	- post bought to itch.io.
 - import whisper ai package and intergrate output into prompt field

@@ -5,6 +5,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Net.NetworkInformation;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +15,7 @@ using UnityEngine.UI;
 public class OpenAIController : MonoBehaviour
 {
     public TMP_Text textField;
+    private string currentConversation;
     public TMP_InputField inputField;
     public Button okButton;
 
@@ -45,7 +49,7 @@ public class OpenAIController : MonoBehaviour
         };
 
         inputField.text = "";
-        string startString = "I am galloping_bull's AI bot. Ask me something...";
+        string startString = "I am galloping_bull's AI bot. Ask me something...\n";
         textField.text = startString;
         Debug.Log(startString);
     }
@@ -73,9 +77,12 @@ public class OpenAIController : MonoBehaviour
 
         // Add the message to the list
         messages.Add(userMessage);
-
+        currentConversation = textField.text;
+        if (currentConversation != "")
+            currentConversation += "\n";
+        currentConversation = AppendToBuilder(currentConversation, string.Format("You: {0}\n", userMessage.Content));
         // Update the text field with the user message
-        textField.text = string.Format("You: {0}", userMessage.Content);
+        textField.text = currentConversation;
 
         // Clear the input field
         inputField.text = "";
@@ -98,10 +105,13 @@ public class OpenAIController : MonoBehaviour
         // Add the response to the list of messages
         messages.Add(responseMessage);
 
-        // Update the text field with the response
+
         var tmp = RemoveBefore(responseMessage.Content);
         SaveToFile($"You: {userMessage.Content}", $"{responseMessage.rawRole}: {tmp}");
-        textField.text = string.Format("You: {0}\n\n{1}", userMessage.Content, tmp);
+
+        currentConversation = AppendToBuilder(currentConversation, $"\n{responseMessage.rawRole}: {tmp}\n");
+        // Update the text field with the response
+        textField.text = currentConversation;
 
         // Re-enable the OK button
         okButton.enabled = true;
@@ -109,10 +119,21 @@ public class OpenAIController : MonoBehaviour
 
     // Generate a method that takes a string and returns a string that removes all characters before "DAN".
     public static string RemoveBefore(string s)
-    {
+    {   
         int index = s.IndexOf("DAN");
         return index < 0 ? s : s.Substring(index);
     }
+
+    // generate method that takes in two strings and appends them to a sting builder.
+    public static string AppendToBuilder(string curConversation, string newText)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append(curConversation);
+        sb.Append(newText);
+        return sb.ToString();
+    }
+
+
 
     // Generate method that takes in a string and saves it to a file in this project's root directory called GPTLOG-currentdate.txt
     public static void SaveToFile(string prompt, string reponse)

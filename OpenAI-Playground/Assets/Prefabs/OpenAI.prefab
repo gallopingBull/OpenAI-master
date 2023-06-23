@@ -39,7 +39,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547541670908990382}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc4e5eb83efb56f40acb56ae2e62e8eb, type: 3}
   m_Name: 
@@ -377,11 +377,11 @@ MonoBehaviour:
   m_Content: {fileID: 4930652127555093774}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 35
   m_Viewport: {fileID: 2940335167275267957}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 5401659172009782567}
@@ -428,7 +428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0001373291, y: -0.0010336316}
+  m_AnchoredPosition: {x: -0.0001373291, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4168426538839969328
@@ -459,75 +459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Iaculis nunc sed augue lacus
-    viverra vitae congue. In massa tempor nec feugiat nisl pretium. Nunc lobortis
-    mattis aliquam faucibus purus. Libero id faucibus nisl tincidunt. Dui sapien
-    eget mi proin sed libero enim sed faucibus. Ac orci phasellus egestas tellus
-    rutrum tellus pellentesque. Pulvinar sapien et ligula ullamcorper malesuada proin
-    libero nunc. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras
-    tincidunt. Sagittis nisl rhoncus mattis rhoncus urna neque. Habitant morbi tristique
-    senectus et netus et. Condimentum lacinia quis vel eros donec ac odio. Faucibus
-    turpis in eu mi bibendum neque. Ut sem viverra aliquet eget. Pharetra vel turpis
-    nunc eget lorem dolor sed. Vitae nunc sed velit dignissim sodales ut. Vel turpis
-    nunc eget lorem. Placerat in egestas erat imperdiet sed euismod nisi porta.
-
-    
-
-    Donec
-    ultrices tincidunt arcu non sodales. Urna molestie at elementum eu facilisis
-    sed odio morbi quis. Urna id volutpat lacus laoreet non. Id diam vel quam elementum.
-    Nullam eget felis eget nunc. Fringilla phasellus faucibus scelerisque eleifend.
-    Sociis natoque penatibus et magnis. Consequat id porta nibh venenatis cras sed.
-    Platea dictumst vestibulum rhoncus est. Arcu dictum varius duis at consectetur.
-    At tellus at urna condimentum. Vivamus at augue eget arcu dictum varius duis
-    at consectetur.
-
-    
-
-    Pretium quam vulputate dignissim suspendisse in
-    est ante. Consectetur purus ut faucibus pulvinar elementum integer enim neque
-    volutpat. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis
-    feugiat vivamus. In hac habitasse platea dictumst. In arcu cursus euismod quis
-    viverra nibh cras pulvinar. Dignissim suspendisse in est ante in nibh mauris.
-    Tincidunt praesent semper feugiat nibh. Enim diam vulputate ut pharetra sit.
-    Dignissim suspendisse in est ante in nibh mauris cursus mattis. Placerat in egestas
-    erat imperdiet sed euismod. Neque ornare aenean euismod elementum nisi quis eleifend.
-    Ut tristique et egestas quis ipsum suspendisse ultrices gravida dictum. Egestas
-    dui id ornare arcu odio ut sem nulla. Leo a diam sollicitudin tempor id eu nisl.
-    Lobortis feugiat vivamus at augue eget arcu dictum varius duis. Commodo sed egestas
-    egestas fringilla. Viverra ipsum nunc aliquet bibendum enim. At consectetur lorem
-    donec massa sapien faucibus et molestie. Sit amet nisl purus in mollis nunc.
-
-    
-
-    Ac
-    odio tempor orci dapibus ultrices in. Nisl purus in mollis nunc sed id semper
-    risus in. Vestibulum lectus mauris ultrices eros. Eu sem integer vitae justo
-    eget magna fermentum iaculis eu. Pulvinar sapien et ligula ullamcorper malesuada
-    proin libero nunc consequat. Bibendum enim facilisis gravida neque convallis
-    a cras. Tellus at urna condimentum mattis. Feugiat scelerisque varius morbi enim
-    nunc faucibus a pellentesque sit. Sit amet est placerat in. Sit amet aliquam
-    id diam maecenas ultricies mi. Mauris in aliquam sem fringilla ut. Semper quis
-    lectus nulla at volutpat diam ut venenatis. Ac ut consequat semper viverra. Pretium
-    nibh ipsum consequat nisl. Venenatis tellus in metus vulputate. Lectus magna
-    fringilla urna porttitor rhoncus dolor purus. Porta non pulvinar neque laoreet
-    suspendisse interdum consectetur libero. Venenatis lectus magna fringilla urna.
-
-    
-
-    Ultrices
-    sagittis orci a scelerisque purus semper eget duis at. Pellentesque elit ullamcorper
-    dignissim cras. Aliquam ultrices sagittis orci a scelerisque purus semper eget.
-    Dictum fusce ut placerat orci nulla pellentesque dignissim enim. Arcu dui vivamus
-    arcu felis bibendum ut tristique. Vitae semper quis lectus nulla at volutpat
-    diam. Malesuada proin libero nunc consequat interdum. Mauris commodo quis imperdiet
-    massa tincidunt nunc. Venenatis tellus in metus vulputate eu scelerisque felis
-    imperdiet proin. Purus gravida quis blandit turpis. Sem fringilla ut morbi tincidunt
-    augue interdum. Urna condimentum mattis pellentesque id nibh tortor id. Sed tempus
-    urna et pharetra pharetra massa massa ultricies. Enim nunc faucibus a pellentesque
-    sit. Dignissim sodales ut eu sem. Est placerat in egestas erat. Fermentum leo
-    vel orci porta non pulvinar neque.'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -554,8 +486,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1851,8 +1783,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8575303783321539435}
   m_HandleRect: {fileID: 3633254411370186406}
   m_Direction: 2
-  m_Value: 1.0000015
-  m_Size: 0.7562135
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
