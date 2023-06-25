@@ -19,7 +19,7 @@ namespace OpenAI
         private AudioClip clip;
         private bool isRecording;
         private float time;
-        private OpenAIApi openai = new OpenAIApi();
+        private OpenAIApi openai = new OpenAIApi("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");
 
         // generate new action that will be invoked at the end of recording
         public Action OnEndRecording;
