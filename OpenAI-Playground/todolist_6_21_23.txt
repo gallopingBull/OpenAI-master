@@ -1,11 +1,14 @@
 to do list:
-- set up webgl and android build 
-	- post bought to itch.io.
-- import whisper ai package and intergrate output into prompt field
-	- Implement button that let's user record their prompt.
 - response output file should display the original chatGPT assistant's response too.
 - respone output format should be made clearer:
 	- Ex. "User: Some Dialoge - UTC TIME: 06-22-2023-00:20:03"
+	
+- set up webgl and android build 
+	- post bot to itch.io.
+	
+- import whisper ai package and intergrate output into prompt field
+	- Implement button that let's user record their prompt.
+
 
 I am galloping_bull's AI bot. Ask me something...
 UnityEngine.Debug:Log (object)

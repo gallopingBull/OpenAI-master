@@ -36,7 +36,8 @@ public class OpenAIController : MonoBehaviour
         api = new OpenAIAPI(Environment.GetEnvironmentVariable("OPENAI_API_KEY", EnvironmentVariableTarget.User));
 #else
         // TODO: Change this to an api key that is stored in a secure location on your server or something. 
-        api = new OpenAIAPI(Environment.GetEnvironmentVariable("OPENAI_API_KEY", EnvironmentVariableTarget.User));
+        //api = new OpenAIAPI("");
+        
 #endif
         logger = GetComponent<SendChatLog>();
         StartConversation();
