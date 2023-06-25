@@ -3,11 +3,9 @@ to do list:
 - respone output format should be made clearer:
 	- Ex. "User: Some Dialoge - UTC TIME: 06-22-2023-00:20:03"
 	
-- set up webgl and android build 
+- set up webgl
 	- post bot to itch.io.
-	
-- import whisper ai package and intergrate output into prompt field
-	- Implement button that let's user record their prompt.
+
 
 
 I am galloping_bull's AI bot. Ask me something...
