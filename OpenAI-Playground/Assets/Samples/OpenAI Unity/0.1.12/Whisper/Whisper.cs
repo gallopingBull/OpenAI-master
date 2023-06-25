@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 namespace OpenAI
@@ -8,8 +9,9 @@ namespace OpenAI
     {
         [SerializeField] private Button recordButton;
         [SerializeField] private Image progressBar;
-        [SerializeField] private Text message;
+        [SerializeField] private TMP_InputField message;
         [SerializeField] private Dropdown dropdown;
+
         
         private readonly string fileName = "output.wav";
         private readonly int duration = 5;
@@ -19,6 +21,8 @@ namespace OpenAI
         private float time;
         private OpenAIApi openai = new OpenAIApi();
 
+        // generate new action that will be invoked at the end of recording
+        public Action OnEndRecording;
         private void Start()
         {
             foreach (var device in Microphone.devices)
@@ -64,7 +68,11 @@ namespace OpenAI
 
             progressBar.fillAmount = 0;
             message.text = res.Text;
+
+            Debug.Log($"message.text: {message.text}");
+            Debug.Log($"res.Text: {res.Text}");
             recordButton.enabled = true;
+            OnEndRecording?.Invoke();
         }
 
         private void Update()
