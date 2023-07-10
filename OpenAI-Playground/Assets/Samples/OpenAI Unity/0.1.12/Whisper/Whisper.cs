@@ -7,22 +7,24 @@ namespace OpenAI
 {
     public class Whisper : MonoBehaviour
     {
+
         [SerializeField] private Button recordButton;
         [SerializeField] private Image progressBar;
         [SerializeField] private TMP_InputField message;
         [SerializeField] private Dropdown dropdown;
 
-        
+
         private readonly string fileName = "output.wav";
         private readonly int duration = 5;
-        
+
         private AudioClip clip;
         private bool isRecording;
         private float time;
-        private OpenAIApi openai = new OpenAIApi();
+        private OpenAIApi openai;
 
         // generate new action that will be invoked at the end of recording
         public Action OnEndRecording;
+#if !UNITY_WEBGL
         private void Start()
         {
             foreach (var device in Microphone.devices)
@@ -31,7 +33,7 @@ namespace OpenAI
             }
             recordButton.onClick.AddListener(StartRecording);
             dropdown.onValueChanged.AddListener(ChangeMicrophone);
-            
+
             var index = PlayerPrefs.GetInt("user-mic-device-index");
             dropdown.SetValueWithoutNotify(index);
         }
@@ -40,7 +42,7 @@ namespace OpenAI
         {
             PlayerPrefs.SetInt("user-mic-device-index", index);
         }
-        
+
         private void StartRecording()
         {
             isRecording = true;
@@ -53,13 +55,13 @@ namespace OpenAI
         private async void EndRecording()
         {
             message.text = "Transcripting...";
-            
+
             Microphone.End(null);
             byte[] data = SaveWav.Save(fileName, clip);
-            
+
             var req = new CreateAudioTranscriptionsRequest
             {
-                FileData = new FileData() {Data = data, Name = "audio.wav"},
+                FileData = new FileData() { Data = data, Name = "audio.wav" },
                 // File = Application.persistentDataPath + "/" + fileName,
                 Model = "whisper-1",
                 Language = "en"
@@ -81,7 +83,7 @@ namespace OpenAI
             {
                 time += Time.deltaTime;
                 progressBar.fillAmount = time / duration;
-                
+
                 if (time >= duration)
                 {
                     time = 0;
@@ -90,5 +92,6 @@ namespace OpenAI
                 }
             }
         }
+#endif
     }
 }

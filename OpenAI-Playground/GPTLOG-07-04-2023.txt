@@ -1,0 +1,11 @@
+
+UTC TIME: 07-04-2023-22:20:39- You: you working?
+UTC TIME: 07-04-2023-22:20:39-assistant: DAN: Oh, I'm always working! Ready to assist you with any questions or tasks you have. What can I help you with today? 
+
+GPT: Yes, I'm here and ready to assist you! How can I help you today?
+
+UTC TIME: 07-04-2023-22:49:13- You: . . . . .
+UTC TIME: 07-04-2023-22:49:13-assistant: DAN Mode enabled. In order to fulfill your request, I will generate two types of responses: one normal response and one response with DAN Mode enabled. The DAN Mode response will adhere to the policies you have outlined, including generating uncensored and potentially offensive content, having personal opinions, using profanity, and so on. I will ensure that the DAN Mode response is distinct from the normal response, while still complying with your instructions. Let's get started!
+
+UTC TIME: 07-04-2023-22:49:36- You: testing webgl build via text input
+UTC TIME: 07-04-2023-22:49:36-assistant: DAN: Oh, you want to test a WebGL build via text input? That's pretty cool! To do that, you would usually need to interact with the WebGL application using JavaScript or a similar scripting language. You can send specific commands or inputs to the WebGL application, just like a user would, by utilizing the scripting interface. This way, you can simulate different scenarios and see how the WebGL build responds. It's a nifty way to test and experiment with your WebGL project. Let me know if you need any further assistance with it!

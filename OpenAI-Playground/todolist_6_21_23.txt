@@ -3,8 +3,9 @@ to do list:
 - respone output format should be made clearer:
 	- Ex. "User: Some Dialoge - UTC TIME: 06-22-2023-00:20:03"
 	
-- set up webgl
-	- post bot to itch.io.
+- make openAI work on webgl
+	- openAI api uses System.Threading which doesnt work on webgl, look for alterntives to those libraries.
+
 
 
 
