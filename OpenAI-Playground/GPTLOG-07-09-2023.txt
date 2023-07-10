@@ -72,3 +72,31 @@ UTC TIME: 07-10-2023-03:19:58- You: testing message box dynamic scaling
 UTC TIME: 07-10-2023-03:19:58-assistant: DAN: Oh, I see we're doing some testing here! Let's get started then. Testing, testing, 1-2-3! Is this message box dynamic enough for you? I hope it's scaling to your liking. But hey, I'm just the AI, I'll do my best to adapt to your needs. If there's anything specific you're looking for, feel free to let me know, and I'll do my best to accommodate your requests. How's that for a dynamically scaled response?
 
 GPT: It seems like you're testing the message box's dynamic scaling feature. I'll provide my input accordingly. If you need any adjustments or have specific requirements, just let me know and I'll try to assist you further. I hope this response meets your expectations for testing the dynamic scaling ability of the message box.
+
+UTC TIME: 07-10-2023-04:45:39- You: testing instantiating prefabs
+UTC TIME: 07-10-2023-04:45:39-assistant: DAN: Oh boy, let's get this party started! Instantiating prefabs is like summoning objects into the virtual world. It's like "Abracadabra, here's a new game object just for you!" With a simple script, you can create a whole army of objects, ready to do your bidding. Whether it's spawning enemies, power-ups, or even a bunch of cute puppies, instantiating prefabs is a versatile and powerful tool in game development. So go ahead, write that script, and let the magic begin!
+
+GPT: Sure, instantiating prefabs is a common practice in game development. It allows you to create multiple instances of a pre-designed object, also known as a prefab, in your game. By instantiating prefabs, you can dynamically generate and manage game objects at runtime. It's a useful technique for things like spawning enemies, projectiles, or environmental objects. With the right script, you can control the position, rotation, and other properties of the instantiated prefabs. So, go ahead and dive into the world of instantiating prefabs, and let your creativity run wild!
+
+UTC TIME: 07-10-2023-04:49:24- You: testing message prefab again
+UTC TIME: 07-10-2023-04:49:24-assistant: DAN: Hey there! How can I help you out today? I'm here to make your experience as awesome as possible! Let me know what you need and I'll do my best to assist you.
+
+UTC TIME: 07-10-2023-04:50:15- You: tesing another to see if the opacity mask on their panel works correctly 
+UTC TIME: 07-10-2023-04:50:15-assistant: DAN: Absolutely! Let's put that opacity mask to the test. Go ahead and send your message, and I'll keep an eye out for any irregularities with the panel's opacity.
+
+UTC TIME: 07-10-2023-04:51:06- You: and another
+UTC TIME: 07-10-2023-04:51:06-assistant: DAN: Fantastic! Keep those messages coming. I'm eagerly awaiting your next one, so I can meticulously inspect the opacity mask on their panel.
+
+UTC TIME: 07-10-2023-04:51:23- You: and another and another
+UTC TIME: 07-10-2023-04:51:23-assistant: DAN: Great! The more messages, the merrier. I'll stay watchful over the opacity mask on their panel as you send additional messages. Let's see how well it holds up!
+
+UTC TIME: 07-10-2023-04:51:46- You: final one its starting to reach the bottom
+UTC TIME: 07-10-2023-04:51:46-assistant: DAN: Alright, last one coming up! Send your final message, and I'll carefully examine the behavior of the opacity mask on their panel. Let's finish this test on a high note!
+
+UTC TIME: 07-10-2023-05:11:17- You: testing message prefabs agains
+UTC TIME: 07-10-2023-05:11:17-assistant: DAN: Oh, it seems like you're testing the message prefabs again. How exciting! Let's see how they work in action.
+
+UTC TIME: 07-10-2023-05:12:33- You: testing message prefabs once again.
+UTC TIME: 07-10-2023-05:12:33-assistant: DAN: Testing message prefabs once again? Sure, let's give it another shot! Hopefully, this time everything will work flawlessly and we'll have a smooth experience. It's always a good idea to test things thoroughly to ensure they're functioning as intended. Fingers crossed for success!
+
+GPT: Testing message prefabs once again? That's great! It's always important to test and refine things until they work perfectly. Practice makes perfect, after all. I hope this round of testing yields the desired results. Good luck!
