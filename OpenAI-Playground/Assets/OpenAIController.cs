@@ -10,7 +10,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using AiKodexDeepVoice;
 public class OpenAIController : MonoBehaviour
 {
 
@@ -18,7 +18,11 @@ public class OpenAIController : MonoBehaviour
     public double temperature = 1;
     public int maxTokens = 250;
     private Model model = Model.ChatGPTTurbo;
+
+    public TMP_Dropdown botPersonalityDropdown;
     [SerializeField] string personalityPrompt;
+    private List<string> personalityOptions = new List<string>() { "chatgpt_dan", "chatgpt_mongo_tom" };
+
     private string promptPath = "Assets/Prompts/BotPromptData.json";
     private OpenAIAPI api;
     private List<OpenAI_API.Chat.ChatMessage> messages;
@@ -30,12 +34,13 @@ public class OpenAIController : MonoBehaviour
     public Button okButton;
     public GameObject scrollViewObject;
 
+    public MessageController messageController;
+
 
     // Logger sends chatlog to google form. 
     private SendChatLog logger;
 
-
-    // Start is called before the first frame update
+    public CanvasController canvasController;
 
     void Start()
     {
@@ -44,11 +49,11 @@ public class OpenAIController : MonoBehaviour
         api = new OpenAIAPI(Environment.GetEnvironmentVariable("OPENAI_API_KEY", EnvironmentVariableTarget.User));
 #else
         // TODO: Change this to an api key that is stored in a secure location on your server or something. 
-       
+
         
 #endif
         logger = GetComponent<SendChatLog>();
-        personalityPrompt = GetPrompt(promptPath);
+        personalityPrompt = GetPrompt("chatgpt_dan", promptPath);
         StartConversation();
         okButton.onClick.AddListener(() => GetResponse());
         GetComponent<Whisper>().OnEndRecording += GetResponse;
@@ -63,6 +68,8 @@ public class OpenAIController : MonoBehaviour
         inputField.text = "";
         string startString = "I am galloping_bull's AI bot. Ask me something...\n";
         textField.text = startString;
+        //messageController.AddMessage(startString);
+
         Debug.Log(startString);
     }
 
@@ -89,6 +96,7 @@ public class OpenAIController : MonoBehaviour
 
         // Add the message to the list
         messages.Add(userMessage);
+        //messageController.AddMessage(userMessage.Content);
 
         // update conversation string.
         currentConversation = textField.text;
@@ -98,7 +106,6 @@ public class OpenAIController : MonoBehaviour
 
         // Update the text field with the user message
         textField.text = currentConversation;
-
         // move scroll view to bottom.
         ResetScrollRectVerticalPosition();
 
@@ -122,16 +129,18 @@ public class OpenAIController : MonoBehaviour
 
         // Add the response to the list of messages
         messages.Add(responseMessage);
-
-
         var tmp = RemoveBefore(responseMessage.Content);
+
+        //messageController.AddMessage(tmp);
 #if UNITY_EDITOR
         SaveToFile($"You: {userMessage.Content}", $"{responseMessage.rawRole}: {tmp}");
 #endif
         logger.Send($"You: {userMessage.Content}\n{responseMessage.rawRole}: {tmp}");
-
+        canvasController.BotResponse = tmp;
+        canvasController.Generate();
         currentConversation = AppendToBuilder(currentConversation, $"\n{responseMessage.rawRole}: {tmp}\n");
         // Update the text field with the response
+
         textField.text = currentConversation;
 
         ResetScrollRectVerticalPosition();
@@ -197,7 +206,7 @@ public class OpenAIController : MonoBehaviour
     }
 
     // Returns a string that is made up of all "prompt" properties from a json file appended together.
-    public static string GetPrompt(string path)
+    public static string GetPrompt(string botPersonality, string path)
     {
         string json = File.ReadAllText(path);
         var prompts = JsonConvert.DeserializeObject<List<ChatPrompt>>(json);
@@ -205,15 +214,30 @@ public class OpenAIController : MonoBehaviour
         StringBuilder sb = new StringBuilder();
 
         foreach (var prompt in prompts)
-            sb.Append(prompt.Prompt);
+        {
+            if (botPersonality == prompt.Type)
+                sb.Append(prompt.Prompt);
+
+            if (prompt.ID == prompts.Count)
+                sb.Append(prompt.Prompt);
+        }
 
         return sb.ToString();
     }
+
+
+
+
 
 }
 
 public class ChatPrompt
 {
+    [JsonProperty("id")]
+    public int ID { get; set; }
+
+    [JsonProperty("type")]
+    public string Type { get; set; }
     [JsonProperty("prompt")]
     public string Prompt { get; set; }
 

@@ -1,4 +1,5 @@
 to do list:
+
 - response output file should display the original chatGPT assistant's response too.
 - respone output format should be made clearer:
 	- Ex. "User: Some Dialoge - UTC TIME: 06-22-2023-00:20:03"
@@ -6,8 +7,15 @@ to do list:
 - make openAI work on webgl
 	- openAI api uses System.Threading which doesnt work on webgl, look for alterntives to those libraries.
 
+- create and implement message reponse prefaces into chat panel.
 
+- implement bot menu to change properties like temp., model, max tokens, etc.
+- Integrate Deep Voice settings into custom Bot settings menu
+ - change response length (maxCharactherCount) so voice isn't cut off by DeepVoice
 
+- swap whisper for the plugin that doesnt make any web requests. 
+
+- implement UI manager
 
 I am galloping_bull's AI bot. Ask me something...
 UnityEngine.Debug:Log (object)

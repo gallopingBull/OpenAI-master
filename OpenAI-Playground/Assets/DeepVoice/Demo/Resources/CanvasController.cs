@@ -32,7 +32,7 @@ namespace AiKodexDeepVoice
         List<string> options2 = new List<string>() { "Obama", "Biden", "Trump", "Queen", "Batman", "Andrew_Tate", "Anime_Girl", "Noah", "Lily", "Ethan", "Sophia", "Olivia", "Ruby", "Lucas", "John" };
         List<string> options3 = new List<string>() { "Lotte", "Maxim", "Salli", "Ola", "Geraint", "Miguel", "Giorgio", "Marlene", "Ines", "Zhiyu", "Zeina", "Karl", "Gwyneth", "Lucia", "Cristiano", "Astrid", "Vicki", "Mia", "Vitoria", "Bianca", "Chantal", "Raveena", "Russell", "Aditi", "Dora", "Enrique", "Hans", "Carmen", "Ewa", "Maja", "Nicole", "Filiz", "Camila", "Jacek", "Celine", "Ricardo", "Mads", "Mathieu", "Lea", "Tatyana", "Penelope", "Naja", "Ruben", "Takumi", "Mizuki", "Carla", "Conchita", "Jan", "Liv", "Lupe", "Seoyeon" };
         float scrubber;
-        AudioSource audioSource;
+        public AudioSource audioSource;
 
         public string BotResponse { set => botResponse = value; }
 
@@ -42,6 +42,8 @@ namespace AiKodexDeepVoice
             PlayerSettings.insecureHttpOption = InsecureHttpOption.DevelopmentOnly;
 #endif
             invoice.text = "IN010002904277";
+            VerifyInvoiceButton();
+
             Button gen = generate.GetComponent<Button>();
             gen.onClick.AddListener(Generate);
             Button saveClip = save.GetComponent<Button>();
@@ -85,10 +87,10 @@ namespace AiKodexDeepVoice
             waveForm.texture = PaintWaveformSpectrum(ac, Screen.width / 5, 100, Color.gray, false, 0);
             overlayWaveForm.texture = waveForm.texture;
             mask.rectTransform.sizeDelta = new Vector2(0, mask.rectTransform.sizeDelta.y);
-            audioSource = GetComponent<AudioSource>();
+            //audioSource = GetComponent<AudioSource>();
 
         }
-        void Generate()
+        public void Generate()
         {
 
             if (botResponse == null)
@@ -112,7 +114,7 @@ namespace AiKodexDeepVoice
                     StartCoroutine(Post("http://50.19.203.25:5000/invoice", "{\"text\":\"" + $"{text.text}" + "\",\"model\":\"" + "DeepVoice_Standard" + "\",\"name\":\"" + $"{voice.options[voice.value].text}" + "\",\"invoice\":\"" + invoice.text + "\",\"variability\":\"" + "0.0" + "\",\"clarity\":\"" + "0.0" + "\"}"));
                 StartCoroutine(Timer());
             }
-            Play();
+
 
         }
         void VerifyInvoiceButton()
@@ -210,6 +212,8 @@ namespace AiKodexDeepVoice
                 waveForm.texture = PaintWaveformSpectrum(audioClip, Screen.width / 5, 100, Color.white, false, 0);
                 overlayWaveForm.texture = waveForm.texture;
                 action = true;
+
+                Play();
             }
         }
         IEnumerator Verify(string url, string bodyJsonString)
