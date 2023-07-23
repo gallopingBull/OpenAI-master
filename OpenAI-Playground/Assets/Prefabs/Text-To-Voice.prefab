@@ -704,8 +704,8 @@ RectTransform:
   m_Children:
   - {fileID: 4890373735904191210}
   - {fileID: 3847340281565706685}
-  - {fileID: 629714967710286460}
   - {fileID: 8520077549679927137}
+  - {fileID: 629714967710286460}
   - {fileID: 8749201738210471583}
   - {fileID: 6183119045791222935}
   m_Father: {fileID: 0}
@@ -770,7 +770,7 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 0
-    m_Bottom: 200
+    m_Bottom: 300
   m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
