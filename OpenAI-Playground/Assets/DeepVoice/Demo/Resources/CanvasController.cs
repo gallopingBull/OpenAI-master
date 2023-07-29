@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Text;
@@ -18,7 +19,8 @@ namespace AiKodexDeepVoice
         private string botResponse;
         public InputField text, fileName, invoice;
 
-        public Dropdown model, voice;
+        public TMP_Dropdown model, voice;
+
         public Slider variability, clarity;
         public Button generate, save, intro, verify;
         public Text charcterCounter;
@@ -157,7 +159,7 @@ namespace AiKodexDeepVoice
             audioSource.Stop();
             scrubber = 0;
         }
-        void ModelChange(Dropdown model)
+        void ModelChange(TMP_Dropdown model)
         {
             voice.ClearOptions();
             if (model.value == 0)
@@ -169,7 +171,7 @@ namespace AiKodexDeepVoice
             else if (model.value == 3)
                 voice.AddOptions(options3);
         }
-        void VoiceChange(Dropdown voice) { }
+        void VoiceChange(TMP_Dropdown voice) { }
         void Intro()
         {
             audioClip = introClip;

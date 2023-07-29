@@ -52,13 +52,25 @@ public class OpenAIController : MonoBehaviour
 
         
 #endif
-        logger = GetComponent<SendChatLog>();
-        personalityPrompt = GetPrompt("chatgpt_dan", promptPath);
+        Init();
         StartConversation();
-        okButton.onClick.AddListener(() => GetResponse());
-        GetComponent<Whisper>().OnEndRecording += GetResponse;
+
     }
 
+    private void Init()
+    {
+
+        logger = GetComponent<SendChatLog>();
+        personalityPrompt = GetPrompt("chatgpt_dan", promptPath);
+        GetComponent<Whisper>().OnEndRecording += GetResponse;
+
+        okButton.onClick.AddListener(() => GetResponse());
+        botPersonalityDropdown.onValueChanged.AddListener(delegate
+      {
+          DropdownValueChanged(botPersonalityDropdown);
+      });
+    }
+    public void ReInitialize() => Init();
     private void StartConversation()
     {
         messages = new List<OpenAI_API.Chat.ChatMessage> {
@@ -226,7 +238,12 @@ public class OpenAIController : MonoBehaviour
     }
 
 
-
+    private void DropdownValueChanged(TMP_Dropdown change)
+    {
+        //personalityPrompt = OpenAIController.GetPrompt(personalityOptions[change.value], promptPath);
+        //openAIController.personalityPrompt = personalityPrompt;
+        //openAIController.ReInitialize();
+    }
 
 
 }
@@ -241,4 +258,30 @@ public class ChatPrompt
     [JsonProperty("prompt")]
     public string Prompt { get; set; }
 
+}
+
+// Genrerate class that suscribes to UI dropdown and changes the bot personality prompt based on the selected option.
+public class Generate : MonoBehaviour
+{
+    public OpenAIController openAIController;
+    public TMP_Dropdown botPersonalityDropdown;
+    public string personalityPrompt;
+    private List<string> personalityOptions = new List<string>() { "chatgpt_dan", "chatgpt_mongo_tom" };
+
+    private string promptPath = "Assets/Prompts/BotPromptData.json";
+
+    private void Start()
+    {
+        botPersonalityDropdown.onValueChanged.AddListener(delegate
+        {
+            DropdownValueChanged(botPersonalityDropdown);
+        });
+    }
+
+    private void DropdownValueChanged(TMP_Dropdown change)
+    {
+        //personalityPrompt = OpenAIController.GetPrompt(personalityOptions[change.value], promptPath);
+        //openAIController.personalityPrompt = personalityPrompt;
+        //openAIController.ReInitialize();
+    }
 }

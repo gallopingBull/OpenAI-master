@@ -17,6 +17,9 @@ to do list:
 
 - implement UI manager
 
+chatgpt_dan
+chatgpt_mongo_tom
+
 I am galloping_bull's AI bot. Ask me something...
 UnityEngine.Debug:Log (object)
 OpenAIController:StartConversation () (at Assets/OpenAIController.cs:50)
