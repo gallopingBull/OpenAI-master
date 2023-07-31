@@ -192,6 +192,7 @@ namespace AiKodexDeepVoice
             }
             if (request.responseCode.ToString() != "200")
             {
+                Debug.Log($"responseCode: {request.responseCode.ToString()}");
                 Debug.Log("There was an error in generating the voice. Please check your invoice/order number and try again.");
                 spinner.enabled = false;
                 action = false;
