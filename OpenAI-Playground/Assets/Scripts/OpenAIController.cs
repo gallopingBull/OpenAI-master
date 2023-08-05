@@ -31,7 +31,7 @@ public class OpenAIController : MonoBehaviour
     public TMP_Text textField;
     private string currentConversation;
     public TMP_InputField inputField;
-    public Button okButton;
+    public Button sendButton;
     public GameObject scrollViewObject;
 
     public MessageController messageController;
@@ -64,13 +64,22 @@ public class OpenAIController : MonoBehaviour
         personalityPrompt = GetPrompt("chatgpt_dan", promptPath);
         GetComponent<Whisper>().OnEndRecording += GetResponse;
 
-        okButton.onClick.AddListener(() => GetResponse());
+        sendButton.onClick.AddListener(() => GetResponse());
         botPersonalityDropdown.onValueChanged.AddListener(delegate
       {
           DropdownValueChanged(botPersonalityDropdown);
       });
     }
-    public void ReInitialize() => Init();
+    public void ReInitialize(string systemPrompt)
+    {
+
+        personalityPrompt = GetPrompt(systemPrompt, promptPath);
+        messages = new List<OpenAI_API.Chat.ChatMessage> {
+              new OpenAI_API.Chat.ChatMessage(ChatMessageRole.System, personalityPrompt)
+        };
+
+
+    }
     private void StartConversation()
     {
         messages = new List<OpenAI_API.Chat.ChatMessage> {
@@ -93,7 +102,7 @@ public class OpenAIController : MonoBehaviour
         }
 
         // Disable the OK button
-        okButton.enabled = false;
+        sendButton.interactable = false;
 
         // Fill the user message from the input field
         OpenAI_API.Chat.ChatMessage userMessage = new OpenAI_API.Chat.ChatMessage();
@@ -148,6 +157,7 @@ public class OpenAIController : MonoBehaviour
         SaveToFile($"You: {userMessage.Content}", $"{responseMessage.rawRole}: {tmp}");
 #endif
         logger.Send($"You: {userMessage.Content}\n{responseMessage.rawRole}: {tmp}");
+        // generate voice response
         canvasController.BotResponse = tmp;
         canvasController.Generate();
         currentConversation = AppendToBuilder(currentConversation, $"\n{responseMessage.rawRole}: {tmp}\n");
@@ -158,7 +168,8 @@ public class OpenAIController : MonoBehaviour
         ResetScrollRectVerticalPosition();
 
         // Re-enable the OK button
-        okButton.enabled = true;
+        Debug.Log("Re-enabling Send button");
+        sendButton.interactable = true;
     }
 
     private void ResetScrollRectVerticalPosition()
@@ -182,8 +193,6 @@ public class OpenAIController : MonoBehaviour
         sb.Append(newText);
         return sb.ToString();
     }
-
-
 
     // Generate method that takes in a string and saves it to a file in this project's root directory called GPTLOG-currentdate.txt
     public static void SaveToFile(string prompt, string reponse)
@@ -225,11 +234,14 @@ public class OpenAIController : MonoBehaviour
 
         StringBuilder sb = new StringBuilder();
 
+        Debug.Log($"botPersonality: {botPersonality}");
         foreach (var prompt in prompts)
         {
+            Debug.Log($"prompt type: {prompt.Type}");
             if (botPersonality == prompt.Type)
                 sb.Append(prompt.Prompt);
 
+            // this adds' the info about galloping_bull to the end of the prompt.
             if (prompt.ID == prompts.Count)
                 sb.Append(prompt.Prompt);
         }
@@ -240,9 +252,9 @@ public class OpenAIController : MonoBehaviour
 
     private void DropdownValueChanged(TMP_Dropdown change)
     {
-        //personalityPrompt = OpenAIController.GetPrompt(personalityOptions[change.value], promptPath);
-        //openAIController.personalityPrompt = personalityPrompt;
-        //openAIController.ReInitialize();
+        Debug.Log($"Dropdown value changed! value: {change.value}");
+        personalityPrompt = GetPrompt(personalityOptions[change.value], promptPath);
+        ReInitialize(personalityPrompt);
     }
 
 
@@ -252,36 +264,9 @@ public class ChatPrompt
 {
     [JsonProperty("id")]
     public int ID { get; set; }
-
     [JsonProperty("type")]
     public string Type { get; set; }
     [JsonProperty("prompt")]
     public string Prompt { get; set; }
 
-}
-
-// Genrerate class that suscribes to UI dropdown and changes the bot personality prompt based on the selected option.
-public class Generate : MonoBehaviour
-{
-    public OpenAIController openAIController;
-    public TMP_Dropdown botPersonalityDropdown;
-    public string personalityPrompt;
-    private List<string> personalityOptions = new List<string>() { "chatgpt_dan", "chatgpt_mongo_tom" };
-
-    private string promptPath = "Assets/Prompts/BotPromptData.json";
-
-    private void Start()
-    {
-        botPersonalityDropdown.onValueChanged.AddListener(delegate
-        {
-            DropdownValueChanged(botPersonalityDropdown);
-        });
-    }
-
-    private void DropdownValueChanged(TMP_Dropdown change)
-    {
-        //personalityPrompt = OpenAIController.GetPrompt(personalityOptions[change.value], promptPath);
-        //openAIController.personalityPrompt = personalityPrompt;
-        //openAIController.ReInitialize();
-    }
 }
