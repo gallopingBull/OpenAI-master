@@ -20,7 +20,8 @@ public class OpenAIController : MonoBehaviour
     private Model model = Model.ChatGPTTurbo;
 
     public TMP_Dropdown botPersonalityDropdown;
-    [SerializeField] string personalityPrompt;
+    [SerializeField] string systemPrompt;
+    public TMP_InputField sytetemPromptTextField;
 
     private List<string> personalityOptions = new List<string>() { "chatgpt_dan", "chatgpt_mongo_tom" };
 
@@ -62,7 +63,8 @@ public class OpenAIController : MonoBehaviour
     {
 
         logger = GetComponent<SendChatLog>();
-        personalityPrompt = GetPrompt("chatgpt_dan", promptPath);
+        systemPrompt = GetPrompt("chatgpt_dan", promptPath);
+        sytetemPromptTextField.text = systemPrompt;
         GetComponent<Whisper>().OnEndRecording += GetResponse;
 
         sendButton.onClick.AddListener(() => GetResponse());
@@ -76,7 +78,7 @@ public class OpenAIController : MonoBehaviour
 
         //personalityPrompt = GetPrompt(systemPrompt, promptPath);
         messages = new List<OpenAI_API.Chat.ChatMessage> {
-              new OpenAI_API.Chat.ChatMessage(ChatMessageRole.System, personalityPrompt)
+              new OpenAI_API.Chat.ChatMessage(ChatMessageRole.System, this.systemPrompt)
         };
 
 
@@ -84,7 +86,7 @@ public class OpenAIController : MonoBehaviour
     private void StartConversation()
     {
         messages = new List<OpenAI_API.Chat.ChatMessage> {
-              new OpenAI_API.Chat.ChatMessage(ChatMessageRole.System, personalityPrompt)
+              new OpenAI_API.Chat.ChatMessage(ChatMessageRole.System, systemPrompt)
         };
 
         inputField.text = "";
@@ -252,8 +254,9 @@ public class OpenAIController : MonoBehaviour
     private void DropdownValueChanged(TMP_Dropdown change)
     {
         Debug.Log($"Dropdown value changed! value: {change.value}");
-        personalityPrompt = GetPrompt(personalityOptions[change.value], promptPath);
-        ReInitialize(personalityPrompt);
+        systemPrompt = GetPrompt(personalityOptions[change.value], promptPath);
+        sytetemPromptTextField.text = systemPrompt;
+        ReInitialize(systemPrompt);
     }
 
 }

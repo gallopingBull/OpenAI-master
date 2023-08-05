@@ -1440,6 +1440,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1595666302040003583, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1630899162170585563, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1546,6 +1550,46 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2084882473501929851, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114512468247319374, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
+      propertyPath: m_Text
+      value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Fermentum et sollicitudin
+        ac orci. Lorem ipsum dolor sit amet consectetur adipiscing elit. Mauris pharetra
+        et ultrices neque ornare aenean. Lorem donec massa sapien faucibus et molestie
+        ac feugiat sed. Duis at consectetur lorem donec massa. Donec pretium vulputate
+        sapien nec sagittis aliquam malesuada bibendum arcu. Consequat interdum varius
+        sit amet mattis vulputate. Vitae suscipit tellus mauris a diam. Congue mauris
+        rhoncus aenean vel elit scelerisque mauris.
+
+        
+
+        Venenatis
+        tellus in metus vulputate eu scelerisque felis imperdiet. Volutpat odio facilisis
+        mauris sit amet massa vitae. Vivamus at augue eget arcu dictum. Maecenas
+        ultricies mi eget mauris pharetra et ultrices neque ornare. Egestas purus
+        viverra accumsan in nisl nisi. Lacus sed turpis tincidunt id aliquet risus
+        feugiat. Aliquam faucibus purus in massa tempor nec. Diam volutpat commodo
+        sed egestas egestas fringilla phasellus faucibus. Senectus et netus et malesuada
+        fames. Adipiscing elit ut aliquam purus sit. Enim neque volutpat ac tincidunt.
+        Velit scelerisque in dictum non consectetur. Nibh tellus molestie nunc non
+        blandit.
+
+        
+
+        Bibendum at varius vel pharetra vel turpis.
+        Turpis egestas sed tempus urna. Scelerisque eu ultrices vitae auctor eu.
+        Lorem sed risus ultricies tristique nulla aliquet enim tortor at. Malesuada
+        fames ac turpis egestas. Cursus eget nunc scelerisque viverra mauris. Pretium
+        viverra suspendisse potenti nullam ac tortor vitae purus. Scelerisque eleifend
+        donec pretium vulputate sapien nec. Donec enim diam vulputate ut pharetra.
+        In egestas erat imperdiet sed euismod nisi. Amet dictum sit amet justo donec
+        enim diam. Enim ut tellus elementum sagittis. Nullam ac tortor vitae purus.
+        Est ullamcorper eget nulla facilisi. Viverra vitae congue eu consequat ac.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114512468247319374, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2278026244441625981, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
@@ -1869,6 +1913,38 @@ PrefabInstance:
       value: STANDARD
       objectReference: {fileID: 0}
     - target: {fileID: 5173527073531594590, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
+      propertyPath: m_text
+      value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Fermentum et sollicitudin
+        ac orci. Lorem ipsum dolor sit amet consectetur adipiscing elit. Mauris pharetra
+        et ultrices neque ornare aenean. Lorem donec massa sapien faucibus et molestie
+        ac feugiat sed. Duis at consectetur lorem donec massa. Donec pretium vulputate
+        sapien nec sagittis aliquam malesuada bibendum arcu. Consequat interdum varius
+        sit amet mattis vulputate. Vitae suscipit tellus mauris a diam. Congue mauris
+        rhoncus aenean vel elit scelerisque mauris.\r\n\r\nVenenatis tellus in metus
+        vulputate eu scelerisque felis imperdiet. Volutpat odio facilisis mauris
+        sit amet massa vitae. Vivamus at augue eget arcu dictum. Maecenas ultricies
+        mi eget mauris pharetra et ultrices neque ornare. Egestas purus viverra accumsan
+        in nisl nisi. Lacus sed turpis tincidunt id aliquet risus feugiat. Aliquam
+        faucibus purus in massa tempor nec. Diam volutpat commodo sed egestas egestas
+        fringilla phasellus faucibus. Senectus et netus et malesuada fames. Adipiscing
+        elit ut aliquam purus sit. Enim neque volutpat ac tincidunt. Velit scelerisque
+        in dictum non consectetur. Nibh tellus molestie nunc non blandit.\r\n\r\nBibendum
+        at varius vel pharetra vel turpis. Turpis egestas sed tempus urna. Scelerisque
+        eu ultrices vitae auctor eu. Lorem sed risus ultricies tristique nulla aliquet
+        enim tortor at. Malesuada fames ac turpis egestas. Cursus eget nunc scelerisque
+        viverra mauris. Pretium viverra suspendisse potenti nullam ac tortor vitae
+        purus. Scelerisque eleifend donec pretium vulputate sapien nec. Donec enim
+        diam vulputate ut pharetra. In egestas erat imperdiet sed euismod nisi. Amet
+        dictum sit amet justo donec enim diam. Enim ut tellus elementum sagittis.
+        Nullam ac tortor vitae purus. Est ullamcorper eget nulla facilisi. Viverra
+        vitae congue eu consequat ac.\u200B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173527073531594590, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
+      propertyPath: m_fontSize
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173527073531594590, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 934e305fca7b07347a1b9f9ed054def1, type: 2}
@@ -1883,6 +1959,14 @@ PrefabInstance:
     - target: {fileID: 5173527073531594590, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
       propertyPath: m_fontColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173527073531594590, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173527073531594590, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5173527073531594590, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
       propertyPath: m_sharedMaterial
@@ -2415,6 +2499,7 @@ PrefabInstance:
     - {fileID: 4671648035299611228, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
     - {fileID: 3537480377890566849, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
     - {fileID: 2892432723367335917, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
+    - {fileID: 8034702731369912820, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7697544075859618973, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
       insertIndex: -1
@@ -3811,7 +3896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6567024814146912718, guid: bb5e977ffc23d6d45974b9d53d47d63e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2381
+      value: 5320
       objectReference: {fileID: 0}
     - target: {fileID: 6567024814146912718, guid: bb5e977ffc23d6d45974b9d53d47d63e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3883,6 +3968,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 713987305333631476, guid: 314041d066d653f40a81acf2cb51778e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 934e305fca7b07347a1b9f9ed054def1, type: 2}
+    - target: {fileID: 713987305333631476, guid: 314041d066d653f40a81acf2cb51778e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1325081176538906888, guid: 934e305fca7b07347a1b9f9ed054def1, type: 2}
     - target: {fileID: 1216115904236253238, guid: 314041d066d653f40a81acf2cb51778e, type: 3}
       propertyPath: m_fontSize
       value: 26
@@ -4225,7 +4318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8923879226057498408, guid: 314041d066d653f40a81acf2cb51778e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00024414062
+      value: 0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 8941204209889885187, guid: 314041d066d653f40a81acf2cb51778e, type: 3}
       propertyPath: m_fontAsset
