@@ -21,6 +21,7 @@ public class OpenAIController : MonoBehaviour
 
     public TMP_Dropdown botPersonalityDropdown;
     [SerializeField] string personalityPrompt;
+
     private List<string> personalityOptions = new List<string>() { "chatgpt_dan", "chatgpt_mongo_tom" };
 
     private string promptPath = "Assets/Prompts/BotPromptData.json";
@@ -73,7 +74,7 @@ public class OpenAIController : MonoBehaviour
     public void ReInitialize(string systemPrompt)
     {
 
-        personalityPrompt = GetPrompt(systemPrompt, promptPath);
+        //personalityPrompt = GetPrompt(systemPrompt, promptPath);
         messages = new List<OpenAI_API.Chat.ChatMessage> {
               new OpenAI_API.Chat.ChatMessage(ChatMessageRole.System, personalityPrompt)
         };
@@ -240,12 +241,10 @@ public class OpenAIController : MonoBehaviour
             Debug.Log($"prompt type: {prompt.Type}");
             if (botPersonality == prompt.Type)
                 sb.Append(prompt.Prompt);
-
-            // this adds' the info about galloping_bull to the end of the prompt.
-            if (prompt.ID == prompts.Count)
-                sb.Append(prompt.Prompt);
         }
 
+        // inject galloping_bull into the last prompt.
+        sb.Append(prompts[prompts.Count - 1].Prompt);
         return sb.ToString();
     }
 
@@ -257,9 +256,7 @@ public class OpenAIController : MonoBehaviour
         ReInitialize(personalityPrompt);
     }
 
-
 }
-
 public class ChatPrompt
 {
     [JsonProperty("id")]
