@@ -64,7 +64,8 @@ public class OpenAIController : MonoBehaviour
 
         logger = GetComponent<SendChatLog>();
         systemPrompt = GetPrompt("chatgpt_dan", promptPath);
-        sytetemPromptTextField.text = systemPrompt;
+        sytetemPromptTextField.text = FormatSystemPrompt(systemPrompt);
+
         GetComponent<Whisper>().OnEndRecording += GetResponse;
 
         sendButton.onClick.AddListener(() => GetResponse());
@@ -255,10 +256,16 @@ public class OpenAIController : MonoBehaviour
     {
         Debug.Log($"Dropdown value changed! value: {change.value}");
         systemPrompt = GetPrompt(personalityOptions[change.value], promptPath);
-        sytetemPromptTextField.text = systemPrompt;
+        sytetemPromptTextField.text = FormatSystemPrompt(systemPrompt);
         ReInitialize(systemPrompt);
     }
 
+    // format system prompt to be more readable.
+    public static string FormatSystemPrompt(string s)
+    {
+        int index = s.IndexOf("In addition");
+        return index < 0 ? s : s.Insert(index, "\n\n");
+    }
 }
 public class ChatPrompt
 {
