@@ -1,3 +1,4 @@
+using AiKodexDeepVoice;
 using Newtonsoft.Json;
 using OpenAI;
 using OpenAI_API;
@@ -10,7 +11,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using AiKodexDeepVoice;
+
 public class OpenAIController : MonoBehaviour
 {
 
@@ -42,7 +43,7 @@ public class OpenAIController : MonoBehaviour
     // Logger sends chatlog to google form. 
     private SendChatLog logger;
 
-    public CanvasController canvasController;
+    //public CanvasController canvasController;
 
     void Start()
     {
@@ -105,7 +106,7 @@ public class OpenAIController : MonoBehaviour
             return;
         }
 
-        // Disable the OK button
+        // Disable the Send button
         sendButton.interactable = false;
 
         // Fill the user message from the input field
@@ -162,17 +163,16 @@ public class OpenAIController : MonoBehaviour
 #endif
         logger.Send($"You: {userMessage.Content}\n{responseMessage.rawRole}: {tmp}");
         // generate voice response
-        canvasController.BotResponse = tmp;
-        canvasController.Generate();
-        currentConversation = AppendToBuilder(currentConversation, $"\n{responseMessage.rawRole}: {tmp}\n");
+        //canvasController.BotResponse = tmp;
+        //canvasController.Generate();
+        //currentConversation = AppendToBuilder(currentConversation, $"\n{responseMessage.rawRole}: {tmp}\n");
         // Update the text field with the response
 
         textField.text = currentConversation;
 
         ResetScrollRectVerticalPosition();
 
-        // Re-enable the OK button
-        Debug.Log("Re-enabling Send button");
+        // Re-enable the Send button.
         sendButton.interactable = true;
     }
 

@@ -9,9 +9,8 @@ using System.Text;
 using System.IO;
 using UnityEditor;
 using System;
+using System.Text.RegularExpressions;
 
-
-using TMPro;
 namespace AiKodexDeepVoice
 {
     public class CanvasController : MonoBehaviour
@@ -37,7 +36,6 @@ namespace AiKodexDeepVoice
         public AudioSource audioSource;
 
         public string BotResponse { set => botResponse = value; }
-
         void Start()
         {
 #if UNITY_2022_1_OR_NEWER
@@ -94,18 +92,23 @@ namespace AiKodexDeepVoice
         }
         public void Generate()
         {
-
             if (botResponse == null)
             {
                 Debug.Log("botResponse is null");
                 return;
             }
 
-            Debug.Log($"botResponse: {botResponse}");
-            text.text = botResponse;
-
-            if (text.text != "")
+            if (invoice.text=="")
+                Debug.Log("Please enter your invoice number before proceeding");
+                
+            if (text.text != "" && invoice.text != "")
             {
+                Debug.Log($"botResponse: {botResponse}");
+                text.text = botResponse;
+
+                text.text = Regex.Replace(text.text, @"\\(?!n|"")", "");
+                text.text = Regex.Replace(text.text, "(?<!n)\n", "\\n");
+                text.text = Regex.Replace(text.text, "(?<!\\\\)\"", "\\\"");
                 if (model.value == 0)
                     StartCoroutine(Post("http://50.19.203.25:5000/invoice", "{\"text\":\"" + $"{text.text}" + "\",\"model\":\"" + "DeepVoice_Neural" + "\",\"name\":\"" + $"{voice.options[voice.value].text}" + "\",\"variability\":\"" + "0.0" + "\",\"invoice\":\"" + invoice.text + "\",\"clarity\":\"" + "0.0" + "\"}"));
                 else if (model.value == 1)
@@ -125,7 +128,7 @@ namespace AiKodexDeepVoice
         }
         void UpdateCharacterCount(string character)
         {
-            int currentCharacterCount = 200 - text.text.Length;
+            int currentCharacterCount = 500 - text.text.Length;
             charcterCounter.text = currentCharacterCount.ToString();
             charcterCounter.color = currentCharacterCount >= 0 ? Color.white : Color.red;
         }
