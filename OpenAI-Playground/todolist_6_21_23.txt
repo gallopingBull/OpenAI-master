@@ -4,8 +4,7 @@ to do list:
 - respone output format should be made clearer:
 	- Ex. "User: Some Dialoge - UTC TIME: 06-22-2023-00:20:03"
 	
-- make openAI work on webgl
-	- openAI api uses System.Threading which doesnt work on webgl, look for alterntives to those libraries.
+
 
 - create and implement message reponse prefaces into chat panel.
 
@@ -17,8 +16,9 @@ to do list:
 
 - implement UI manager
 
-chatgpt_dan
-chatgpt_mongo_tom
+
+- make openAI work on webgl
+	- openAI api uses System.Threading which doesnt work on webgl, look for alterntives to those libraries.
 
 I am galloping_bull's AI bot. Ask me something...
 UnityEngine.Debug:Log (object)

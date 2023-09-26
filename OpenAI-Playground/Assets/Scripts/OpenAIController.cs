@@ -17,10 +17,11 @@ public class OpenAIController : MonoBehaviour
     [Header("OpenAI Settings")]
     [Range(0f,2f)]
     public float temperature = 1;
-    [Range(1, 500)]
+    [Range(1, 1000)]
     public int maxTokens = 250;
     private Model model = Model.ChatGPTTurbo;
 
+    public TMP_Dropdown openAIModelDropdown;
     public TMP_Dropdown botPersonalityDropdown;
     public Slider temperatureSlider;
     public Slider tokenSlider;
@@ -70,6 +71,12 @@ public class OpenAIController : MonoBehaviour
         GetComponent<Whisper>().OnEndRecording += GetResponse;
 
         sendButton.onClick.AddListener(() => GetResponse());
+
+        openAIModelDropdown.onValueChanged.AddListener(delegate
+        {
+            ModelDropdownValueChanged(openAIModelDropdown);
+        });
+
         temperatureSlider.onValueChanged.AddListener(delegate
         {
             TemperatureSliderValueChanged(temperatureSlider);
@@ -85,6 +92,9 @@ public class OpenAIController : MonoBehaviour
           PersonalityDropdownValueChanged(botPersonalityDropdown);
       });
     }
+
+
+
     public void ReInitialize(string systemPrompt)
     {
 
@@ -279,6 +289,44 @@ public class OpenAIController : MonoBehaviour
         Debug.Log($"Bot token slider value changed! value: {change.value}");
         maxTokens = (int)change.value;
         ReInitialize(systemPrompt);
+    }
+
+    private void ModelDropdownValueChanged(TMP_Dropdown openAIModelDropdown)
+    {
+        switch (openAIModelDropdown.value)
+        {
+            case 0:
+                model = Model.ChatGPTTurbo;
+                break;
+
+            case 2:
+                model = Model.AdaText;
+                break;
+
+            case 3:
+                model = Model.AdaTextEmbedding;
+                break;
+
+            case 4:
+                model = Model.BabbageText;
+                break;
+
+            case 5:
+                model = Model.CurieText;
+                break;
+
+            case 6:
+                model = Model.CushmanCode;
+                break;
+
+            default:
+                model = Model.ChatGPTTurbo;
+                break;
+        }
+
+        Debug.Log($"Bot open ai model dropdown value changed! value: {openAIModelDropdown.value}");
+        ReInitialize(systemPrompt);
+
     }
 
 
