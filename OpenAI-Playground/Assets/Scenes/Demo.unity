@@ -3113,6 +3113,17 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!114 &530159220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2681143016743567108, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
+  m_PrefabInstance: {fileID: 8090327098701281269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &546772716
 GameObject:
   m_ObjectHideFlags: 0
@@ -3185,6 +3196,17 @@ Transform:
   m_Father: {fileID: 1003472932}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -120.745, z: 0}
+--- !u!114 &870518979 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2679870681478341700, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
+  m_PrefabInstance: {fileID: 8090327098701281269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &967111113
 GameObject:
   m_ObjectHideFlags: 0
@@ -3599,6 +3621,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 396509467461955417}
     - target: {fileID: 3524191715147082716, guid: 5e6072fbb4e4f6f4bbc02b543543b877, type: 3}
+      propertyPath: temperature
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524191715147082716, guid: 5e6072fbb4e4f6f4bbc02b543543b877, type: 3}
+      propertyPath: tokenSlider
+      value: 
+      objectReference: {fileID: 530159220}
+    - target: {fileID: 3524191715147082716, guid: 5e6072fbb4e4f6f4bbc02b543543b877, type: 3}
       propertyPath: canvasController
       value: 
       objectReference: {fileID: 3054057387171662798}
@@ -3610,6 +3640,10 @@ PrefabInstance:
       propertyPath: messageController
       value: 
       objectReference: {fileID: 8090327098701281270}
+    - target: {fileID: 3524191715147082716, guid: 5e6072fbb4e4f6f4bbc02b543543b877, type: 3}
+      propertyPath: temperatureSlider
+      value: 
+      objectReference: {fileID: 870518979}
     - target: {fileID: 3524191715147082716, guid: 5e6072fbb4e4f6f4bbc02b543543b877, type: 3}
       propertyPath: botPersonalityDropdown
       value: 
@@ -3863,7 +3897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1459626150442969011, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00024414062
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1605290952239835006, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4005,10 +4039,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2505399665155932598, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
-      propertyPath: m_Value
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2568283235615021813, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4024,6 +4054,14 @@ PrefabInstance:
     - target: {fileID: 2568283235615021813, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681143016743567108, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
+      propertyPath: m_MaxValue
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2681143016743567108, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2752246564659108035, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4435,6 +4473,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7573688257016126320, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573688257016126320, guid: 109ef3e3b798146459a06c20b7427754, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7697284804268660477, guid: 109ef3e3b798146459a06c20b7427754, type: 3}

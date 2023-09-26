@@ -1654,6 +1654,10 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2892940903981925560, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
+      propertyPath: m_MaxValue
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3077664224958877485, guid: ab14e325f238a16459e2f5a46460c409, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4255,7 +4259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5571701612434667821, guid: 314041d066d653f40a81acf2cb51778e, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5931389920303040061, guid: 314041d066d653f40a81acf2cb51778e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4303,7 +4307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8923879226057498408, guid: 314041d066d653f40a81acf2cb51778e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0.00024414062
       objectReference: {fileID: 0}
     - target: {fileID: 8941204209889885187, guid: 314041d066d653f40a81acf2cb51778e, type: 3}
       propertyPath: m_fontAsset

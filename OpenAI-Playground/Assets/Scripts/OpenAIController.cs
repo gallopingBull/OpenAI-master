@@ -14,13 +14,16 @@ using UnityEngine.UI;
 
 public class OpenAIController : MonoBehaviour
 {
-
     [Header("OpenAI Settings")]
-    public double temperature = 1;
+    [Range(0f,2f)]
+    public float temperature = 1;
+    [Range(1, 500)]
     public int maxTokens = 250;
     private Model model = Model.ChatGPTTurbo;
 
     public TMP_Dropdown botPersonalityDropdown;
+    public Slider temperatureSlider;
+    public Slider tokenSlider;
     [SerializeField] string systemPrompt;
     public TMP_InputField sytetemPromptTextField;
 
@@ -43,7 +46,7 @@ public class OpenAIController : MonoBehaviour
     // Logger sends chatlog to google form. 
     private SendChatLog logger;
 
-    //public CanvasController canvasController;
+    public CanvasController canvasController;
 
     void Start()
     {
@@ -51,9 +54,7 @@ public class OpenAIController : MonoBehaviour
 #if UNITY_EDITOR
         api = new OpenAIAPI(Environment.GetEnvironmentVariable("OPENAI_API_KEY", EnvironmentVariableTarget.User));
 #else
-        // TODO: Change this to an api key that is stored in a secure location on your server or something. 
-
-        
+        // TODO: Change this to an api key that is stored in a secure location on your server or something.
 #endif
         Init();
         StartConversation();
@@ -62,7 +63,6 @@ public class OpenAIController : MonoBehaviour
 
     private void Init()
     {
-
         logger = GetComponent<SendChatLog>();
         systemPrompt = GetPrompt("chatgpt_dan", promptPath);
         sytetemPromptTextField.text = FormatSystemPrompt(systemPrompt);
@@ -70,9 +70,19 @@ public class OpenAIController : MonoBehaviour
         GetComponent<Whisper>().OnEndRecording += GetResponse;
 
         sendButton.onClick.AddListener(() => GetResponse());
+        temperatureSlider.onValueChanged.AddListener(delegate
+        {
+            TemperatureSliderValueChanged(temperatureSlider);
+        });
+
+        tokenSlider.onValueChanged.AddListener(delegate
+        {
+            TokenSliderValueChanged(tokenSlider);
+        });
+
         botPersonalityDropdown.onValueChanged.AddListener(delegate
       {
-          DropdownValueChanged(botPersonalityDropdown);
+          PersonalityDropdownValueChanged(botPersonalityDropdown);
       });
     }
     public void ReInitialize(string systemPrompt)
@@ -82,8 +92,6 @@ public class OpenAIController : MonoBehaviour
         messages = new List<OpenAI_API.Chat.ChatMessage> {
               new OpenAI_API.Chat.ChatMessage(ChatMessageRole.System, this.systemPrompt)
         };
-
-
     }
     private void StartConversation()
     {
@@ -142,8 +150,8 @@ public class OpenAIController : MonoBehaviour
         var chatResult = await api.Chat.CreateChatCompletionAsync(new ChatRequest()
         {
             Model = model,
-            Temperature = 1, // this controls the behavior/correctness of the bot 
-            MaxTokens = 250,
+            Temperature = temperature, // this controls the behavior/correctness of the bot 
+            MaxTokens = maxTokens,
             Messages = messages
         });
 
@@ -163,9 +171,9 @@ public class OpenAIController : MonoBehaviour
 #endif
         logger.Send($"You: {userMessage.Content}\n{responseMessage.rawRole}: {tmp}");
         // generate voice response
-        //canvasController.BotResponse = tmp;
-        //canvasController.Generate();
-        //currentConversation = AppendToBuilder(currentConversation, $"\n{responseMessage.rawRole}: {tmp}\n");
+        canvasController.BotResponse = tmp;
+        canvasController.Generate();
+        currentConversation = AppendToBuilder(currentConversation, $"\n{responseMessage.rawRole}: {tmp}\n");
         // Update the text field with the response
 
         textField.text = currentConversation;
@@ -252,21 +260,36 @@ public class OpenAIController : MonoBehaviour
     }
 
 
-    private void DropdownValueChanged(TMP_Dropdown change)
+    private void PersonalityDropdownValueChanged(TMP_Dropdown change)
     {
-        Debug.Log($"Dropdown value changed! value: {change.value}");
+        Debug.Log($"Bot personality dropdown value changed! value: {change.value}");
         systemPrompt = GetPrompt(personalityOptions[change.value], promptPath);
         sytetemPromptTextField.text = FormatSystemPrompt(systemPrompt);
         ReInitialize(systemPrompt);
     }
 
-    // format system prompt to be more readable.
+    private void TemperatureSliderValueChanged(Slider change)
+    {
+        Debug.Log($"Bot tempature slider value changed! value: {change.value}");
+        temperature = change.value;    
+        ReInitialize(systemPrompt);
+    }
+    private void TokenSliderValueChanged(Slider change)
+    {
+        Debug.Log($"Bot token slider value changed! value: {change.value}");
+        maxTokens = (int)change.value;
+        ReInitialize(systemPrompt);
+    }
+
+
+    // format system prompt to be more readable.s
     public static string FormatSystemPrompt(string s)
     {
         int index = s.IndexOf("In addition");
         return index < 0 ? s : s.Insert(index, "\n\n");
     }
 }
+
 public class ChatPrompt
 {
     [JsonProperty("id")]
